@@ -68,12 +68,12 @@ Baseten is our [preferred inference partner](https://www.baseten.co/blog/canopy-
    return tokens_decoder_sync(self.generate_tokens_sync(**kwargs))
    ```
 
-3. Start the Gradio WebUI
+4. Start the Gradio WebUI
    ```bash
    python app.py
    ```
       
-4. Run the example below:
+5. Run the example below:
    ```python
    from orpheus_tts import OrpheusModel
    import wave
