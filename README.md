@@ -56,6 +56,12 @@ Baseten is our [preferred inference partner](https://www.baseten.co/blog/canopy-
    cd Orpheus-TTS && pip install orpheus-speech gradio && huggingface-cli login # uses vllm under the hood for fast inference
    ```
    vllm pushed a slightly buggy version on March 18th so some bugs are being resolved by reverting to `pip install vllm==0.7.3` after `pip install orpheus-speech`
+
+3. Start the Gradio WebUI
+   ```bash
+   python app.py
+   ```
+      
 4. Run the example below:
    ```python
    from orpheus_tts import OrpheusModel
