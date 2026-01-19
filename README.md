@@ -49,7 +49,7 @@ Baseten is our [preferred inference partner](https://www.baseten.co/blog/canopy-
 
 1. Clone this repo
    ```bash
-   git clone https://github.com/canopyai/Orpheus-TTS.git
+   git clone https://github.com/nitinh12/Orpheus-TTS.git
    ```
 2. Navigate and install packages
    ```bash
