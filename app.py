@@ -1,5 +1,5 @@
 import os
-# 👈 vLLM Length Control via Environment Variables
+# vLLM Length Control via Environment Variables
 os.environ['VLLM_MAX_MODEL_LEN'] = '16384'
 os.environ['VLLM_MAX_NUM_SEQS'] = '1'
 os.environ['VLLM_MAX_NUM_BATCHED_TOKENS'] = '8192'
@@ -115,7 +115,7 @@ with gr.Blocks(title="Orpheus TTS - vLLM Backend") as demo:
             )
             
             with gr.Accordion("Advanced Settings", open=False):
-                temperature_slider = gr.Slider(0.1, 2.0, 1.0, 0.1, label="Temperature", info="Higher = faster speech")
+                temperature_slider = gr.Slider(0.1, 2.0, 0.6, 0.1, label="Temperature", info="Higher = faster speech")
                 repetition_penalty_slider = gr.Slider(1.0, 2.0, 1.1, 0.05, label="Repetition Penalty", info=">=1.1 required")
                 top_p_slider = gr.Slider(0.1, 1.0, 0.95, 0.05, label="Top P")
             
