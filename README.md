@@ -57,6 +57,17 @@ Baseten is our [preferred inference partner](https://www.baseten.co/blog/canopy-
    ```
    vllm pushed a slightly buggy version on March 18th so some bugs are being resolved by reverting to `pip install vllm==0.7.3` after `pip install orpheus-speech`
 
+3. Navigate and install packages
+   To make longer audio you will have to edit the 'engine_class.py' file. To find that file path in your system use this command - 
+   ```bash
+   python -c "import orpheus_tts; import os; print(os.path.dirname(orpheus_tts.__file__))"
+   ```
+   Once you get the file path open that file and find this line 'return tokens_decoder_sync(self.generate_tokens_sync(**kwargs))' and add this line above it 'kwargs['max_tokens'] = 2048' so it looks like this -
+   ```bash
+   kwargs['max_tokens'] = 2048
+   return tokens_decoder_sync(self.generate_tokens_sync(**kwargs))
+   ```
+
 3. Start the Gradio WebUI
    ```bash
    python app.py
