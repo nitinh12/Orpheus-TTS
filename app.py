@@ -1,8 +1,8 @@
 import os
 # 👈 vLLM Length Control via Environment Variables
-os.environ['VLLM_MAX_MODEL_LEN'] = '8192'
+os.environ['VLLM_MAX_MODEL_LEN'] = '16384'
 os.environ['VLLM_MAX_NUM_SEQS'] = '1'
-os.environ['VLLM_MAX_NUM_BATCHED_TOKENS'] = '4096'
+os.environ['VLLM_MAX_NUM_BATCHED_TOKENS'] = '8192'
 
 import gradio as gr
 from orpheus_tts import OrpheusModel
@@ -39,7 +39,7 @@ def generate_speech(prompt, voice, temperature, repetition_penalty, top_p):
         start_load = time.monotonic()
         model = OrpheusModel(model_name="canopylabs/orpheus-tts-0.1-finetune-prod")
         load_time = time.monotonic() - start_load
-        print(f"✅ Model loaded in {load_time:.2f}s (Max context: 8192 tokens)")
+        print(f"✅ Model loaded in {load_time:.2f}s (Max context: 16384 tokens)")
         
         gen_start = time.monotonic()
         syn_tokens = model.generate_speech(
@@ -76,7 +76,7 @@ def generate_speech(prompt, voice, temperature, repetition_penalty, top_p):
         info_text = f"""✅ Generated {duration:.2f}s audio
 ⏱️ Load: {load_time:.2f}s | Gen: {gen_time:.2f}s
 📊 RTF: {gen_time/duration:.2f}x | {chunk_count} chunks
-🔧 vLLM Max Context: 8192 tokens"""
+🔧 vLLM Max Context: 16384 tokens"""
         
         return (24000, audio_data), info_text
         
@@ -92,7 +92,7 @@ EMOTIVE_TAGS = ["`<laugh>`", "`<chuckle>`", "`<sigh>`", "`<cough>`", "`<sniffle>
 
 with gr.Blocks(title="Orpheus TTS - vLLM Backend") as demo:
     gr.Markdown(f"""
-    # 🎙️ Orpheus TTS - vLLM Backend (8192 Token Context)
+    # 🎙️ Orpheus TTS - vLLM Backend
     **Fresh model loaded each generation** - No crashes!
     
     **Tips**: Use {', '.join(EMOTIVE_TAGS)} or `uhm` for human-like speech
